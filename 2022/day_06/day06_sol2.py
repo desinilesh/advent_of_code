@@ -1,0 +1,14 @@
+from collections import deque
+
+INPUT = "input.txt"
+NUM_DISTINCT_CHARS = 14
+
+with open(INPUT, "r") as f:
+    line = f.readline()
+
+max_n = deque(maxlen=NUM_DISTINCT_CHARS)
+for index, char in enumerate(line):
+    max_n.append(char)
+    if len(set(max_n)) == NUM_DISTINCT_CHARS:
+        print(f"Number of chars before first start-of-message marker {index + 1}")
+        exit(0)

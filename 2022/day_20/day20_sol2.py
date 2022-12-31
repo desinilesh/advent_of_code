@@ -1,6 +1,8 @@
 from collections import deque
 
 INPUT = "input.txt"
+DECRYPTION_KEY = 811589153
+NUM_MIXES = 10
 
 def mix(d: deque):
     """ Move each number once, using original indexes """
@@ -25,11 +27,14 @@ def value_at_index(values: list, index: int):
 with open(INPUT, "r") as f:
     coordinates = list(map(int, f.read().splitlines()))
 
+decrypted_coordinates = [DECRYPTION_KEY * value for value in coordinates]
 # deque of tuple with original index and coordinates
-d = deque(list(enumerate(coordinates)))
-result = mix(d)
+d = deque(list(enumerate(decrypted_coordinates)))
+
+for _ in range(NUM_MIXES):
+    d = mix(d)
 
 sum_of_coordinates = 0
 for i in range(1000, 3001, 1000):
-    sum_of_coordinates += value_at_index([val[1] for val in result], i)
-print(f"[PART 1] Sum of coordinates at specific indices = {sum_of_coordinates}")
+    sum_of_coordinates += value_at_index([val[1] for val in d], i)
+print(f"[PART 2] Sum of decrypted coordinates at specific indices = {sum_of_coordinates}")

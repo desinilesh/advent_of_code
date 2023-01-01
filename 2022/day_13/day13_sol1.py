@@ -1,8 +1,6 @@
 import ast
 import sys
 
-from itertools import zip_longest
-
 INPUT = "input.txt"
 
 # Return of negative values imply that it is the right order

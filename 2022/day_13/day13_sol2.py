@@ -39,7 +39,6 @@ div_6_packet = [[6]]
 packets.append(div_2_packet)
 packets.append(div_6_packet)
 
-sum_of_pair_indices = 0
 packets.sort(key=cmp_to_key(compare))
 index_div_2_packet = packets.index(div_2_packet)
 index_div_6_packet = packets.index(div_6_packet)
